@@ -25,14 +25,14 @@ class Config:
     NEWS_LOOKBAACK_DAYS = os.getenv("NEWS_LOOKBAACK_DAYS", 7)
 
     # Odds API settings
-    ODDS_SPORT: str = "baseball_mlb"
+    ODDS_SPORT: str = "baseball_mlb_world_series_winner"
     ODDS_MARKET: str = "outrights" # For futures/championship odds
 
     # Sentiment model
     SENTIMENT_MODEL: str = "cardiffnlp/twitter-roberta-base-sentiment-latest"
 
     @classmethod
-    def validate(cls): -> list[str]:
+    def validate(cls) -> list[str]:
         """Check for missing required configuartion. Return list of missing items."""
         missing = []
         if not cls.NEWS_API_KEY:

@@ -2,7 +2,7 @@
 Database models for storing articles, odds, and sentiment scores.
 """
 
-from datetime import datetime
+from datetime import datetime, timezone
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, Text, ForeignKey
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 from pathlib import Path
@@ -21,7 +21,7 @@ class Article(Base):
     title = Column(String(500))
     description = Column(Text, nullable=True)
     url = Column(String(1000), nullable=True)
-    published_at = Column(DateTime(timezone=True)
+    published_at = Column(DateTime(timezone=True))
     collected_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
     # Relationship to sentiment
@@ -74,7 +74,7 @@ class OddsSnapshot(Base):
 def get_engine():
     """Create database engine, ensuring directory exists."""
 
-    db_path = config.DATEBASE_PATH
+    db_path = config.DATABASE_PATH
     db_path.parent.mkdir(parents=True, exist_ok=True)
     return create_engine(f'sqlite:///{db_path}')
 
