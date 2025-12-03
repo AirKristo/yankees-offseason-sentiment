@@ -22,6 +22,7 @@ class Article(Base):
     description = Column(Text, nullable=True)
     url = Column(String(1000), nullable=True)
     published_at = Column(DateTime(timezone=True))
+    content = Column(Text, nullable=True)
     collected_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
 
     # Relationship to sentiment

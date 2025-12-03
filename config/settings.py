@@ -22,7 +22,7 @@ class Config:
     DATABASE_PATH: Path = PROJECT_ROOT / os.getenv("DATABASE_PATH", "data/yankees_sentiment.db")
 
     # News collection settings
-    NEWS_LOOKBAACK_DAYS = os.getenv("NEWS_LOOKBAACK_DAYS", 7)
+    NEWS_LOOKBACK_DAYS: int = int(os.getenv("NEWS_LOOKBACK_DAYS", 7))
 
     # Odds API settings
     ODDS_SPORT: str = "baseball_mlb_world_series_winner"
