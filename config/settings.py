@@ -1,5 +1,5 @@
 """
-Configuration managment for the project.
+Configuration management for the project.
 Loads settings from environment variables.
 """
 
